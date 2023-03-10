@@ -51,6 +51,7 @@ public class Robot extends TimedRobot {
 
   //Arm
   private final CANSparkMax arm = new CANSparkMax(7, MotorType.kBrushless);
+  RelativeEncoder armEncoder = arm.getEncoder();
 
   //Intake
   private final CANSparkMax intake = new CANSparkMax(8, MotorType.kBrushless);
@@ -83,14 +84,19 @@ public class Robot extends TimedRobot {
 
   public void lowLevel(){
     elevatEncoder.setPosition(kDefaultPeriod);
+    armEncoder.setPosition(kDefaultPeriod);
   }
 
   public void midLevel(){
     elevatEncoder.setPosition(kDefaultPeriod);
+    armEncoder.setPosition(kDefaultPeriod);
+
   }
 
   public void topLevel(){
     elevatEncoder.setPosition(kDefaultPeriod);
+    armEncoder.setPosition(kDefaultPeriod);
+
   }
 
   public void elevator(){
