@@ -4,7 +4,6 @@
 
 package frc.robot;
 
-import com.revrobotics.CANEncoder;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
@@ -23,16 +22,25 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.cameraserver.CameraServer;
 
 /**
- * This is a demo program showing the use of the DifferentialDrive class, specifically it contains
- * the code necessary to operate a robot with tank drive.
+ * CAN IDS:
+ * LeftFrontDriveMotor: 2
+ * LeftRearDriveMotor: 3
+ * RightFrontDriveMotor: 4
+ * RightRearDriveMotor: 5
+ * elevator: 6
+ * arm: 7
+ * intake: 8
  */
 public class Robot extends TimedRobot {
 
+  //setting up auto choices
   private static final String kDefaultAuto = "Default";
   private static final String kCustomAuto = "My Auto";
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
-  public final XboxController xbox = new XboxController(0);
+
+  //controllers
+  public final XboxController driver = new XboxController(0);
   public final XboxController operator = new XboxController(1);
 
 
@@ -56,16 +64,13 @@ public class Robot extends TimedRobot {
   //Intake
   private final CANSparkMax intake = new CANSparkMax(8, MotorType.kBrushless);
 
+  //set up timer
   Timer timer = new Timer();
 
 
   @Override
   public void robotInit() {
-    // We need to invert one side of the drivetrain so that positive voltages
-    // result in both sides moving forward. Depending on how your robot's
-    // gearbox is constructed, you might have to invert the left side instead.
     m_right.setInverted(true);
-    
     CameraServer.startAutomaticCapture();
     m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
     m_chooser.addOption("My Auto", kCustomAuto);
@@ -73,13 +78,35 @@ public class Robot extends TimedRobot {
     
   }
 
+  //set drive train to break mode
+  public void breakmode()
+  {
+    m_LeftFrontDriveMotor.setIdleMode(IdleMode.kBrake);
+    m_LeftRearDriveMotor.setIdleMode(IdleMode.kBrake);
+    m_RightFrontDriveMotor.setIdleMode(IdleMode.kBrake);
+    m_RightRearDriveMotor.setIdleMode(IdleMode.kBrake);
+  }
+
+  //set drive train to coast mode
+  public void coastmode()
+  {
+    m_LeftFrontDriveMotor.setIdleMode(IdleMode.kCoast);
+    m_LeftRearDriveMotor.setIdleMode(IdleMode.kCoast);
+    m_RightFrontDriveMotor.setIdleMode(IdleMode.kCoast);
+    m_RightRearDriveMotor.setIdleMode(IdleMode.kCoast);
+  }
+
+  //move intake in different directions depending on trigger
   public void intake(){
     intake.set(operator.getLeftTriggerAxis());
     intake.set(-operator.getRightTriggerAxis());
   }
 
+  //you can move the arm if you press X and then move the left joystick
   public void arm(){
-    arm.set(operator.getLeftY());
+    if (operator.getRawButton(3)){
+      arm.set(operator.getLeftY());
+    }
   }
 
   public void lowLevel(){
@@ -99,16 +126,18 @@ public class Robot extends TimedRobot {
 
   }
 
+
   public void elevator(){
+    //hold Y to go to top level
     if (operator.getRawButton(4)){
       topLevel();
     }
-
+    //hold B to go to mid level
     else if (operator.getRawButton(2))
     {
       midLevel();
     }
-
+    //hold A to go to low level
     else if (operator.getRawButton(1))
     {
       lowLevel();
@@ -118,9 +147,10 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopPeriodic() {
-    m_myRobot.tankDrive(-xbox.getLeftY()*0.75, -xbox.getRightY()*0.75);
+    m_myRobot.tankDrive(-driver.getLeftY()*0.75, -driver.getRightY()*0.75);
     intake();
     arm();
+    elevator();
   }
 
   @Override
@@ -132,21 +162,7 @@ public class Robot extends TimedRobot {
     timer.start();
   }
 
-  public void breakmode()
-  {
-    m_LeftFrontDriveMotor.setIdleMode(IdleMode.kBrake);
-    m_LeftRearDriveMotor.setIdleMode(IdleMode.kBrake);
-    m_RightFrontDriveMotor.setIdleMode(IdleMode.kBrake);
-    m_RightRearDriveMotor.setIdleMode(IdleMode.kBrake);
-  }
-
-  public void coastmode()
-  {
-    m_LeftFrontDriveMotor.setIdleMode(IdleMode.kCoast);
-    m_LeftRearDriveMotor.setIdleMode(IdleMode.kCoast);
-    m_RightFrontDriveMotor.setIdleMode(IdleMode.kCoast);
-    m_RightRearDriveMotor.setIdleMode(IdleMode.kCoast);
-  }
+  
 
   @Override
   public void autonomousPeriodic()
