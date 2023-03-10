@@ -1,6 +1,5 @@
-// Copyright (c) FIRST and other WPILib contributors.
-// Open Source Software; you can modify and/or share it under the terms of
-// the WPILib BSD license file in the root directory of this project.
+// Aniket Sonika
+//Code for FRC 1450
 
 package frc.robot;
 
@@ -30,6 +29,10 @@ import edu.wpi.first.cameraserver.CameraServer;
  * elevator: 6
  * arm: 7
  * intake: 8
+ * 
+ * Controller ID:
+ * Driver: 0
+ * Operator: 1
  */
 public class Robot extends TimedRobot {
 
