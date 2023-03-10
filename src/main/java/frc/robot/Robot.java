@@ -37,8 +37,21 @@ import edu.wpi.first.cameraserver.CameraServer;
 public class Robot extends TimedRobot {
 
   //setting up auto choices
+
+  //crosses community line
   private static final String kDefaultAuto = "Default";
   private static final String kCustomAuto = "My Auto";
+  //goes up ramp
+  private static final String kRamp = "Ramp Up";
+  //puts 1 cone in middle height
+  private static final String k1ConeMid = "Middle Cone";
+  //puts 1 cube in middle height
+  private static final String k1CubeMid = "Middle Cube";
+  //puts 1 cone in low height
+  private static final String k1ConeLow = "Low Cone";
+  //puts 1 cube in low height
+  private static final String k1CubeLow = "Low Cube";
+
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
 
@@ -77,6 +90,11 @@ public class Robot extends TimedRobot {
     CameraServer.startAutomaticCapture();
     m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
     m_chooser.addOption("My Auto", kCustomAuto);
+    m_chooser.addOption("Ramp Up", kRamp);
+    m_chooser.addOption("One Middle Cone", k1ConeMid);
+    m_chooser.addOption("One Middle Cube", k1CubeMid);
+    m_chooser.addOption("One Low Cone", k1ConeLow);
+    m_chooser.addOption("One Low Cube", k1CubeLow);
     SmartDashboard.putData("Auto choices", m_chooser);
     
   }
@@ -171,6 +189,7 @@ public class Robot extends TimedRobot {
   public void autonomousPeriodic()
   {
     switch (m_autoSelected) {
+
       case kCustomAuto:
       if (timer.get()<1){
         coastmode();
@@ -189,9 +208,38 @@ public class Robot extends TimedRobot {
         breakmode();
       }
         break;
+      
+        // go up ramp
+      case kRamp:
+      if (timer.get()<1.8){
+        coastmode();
+        m_myRobot.tankDrive(0.5, 0.5);
+      }
+      else{
+        m_myRobot.tankDrive(0, 0);
+        breakmode();
+      }
+
+       //puts 1 cone in middle height
+      case k1ConeMid:
+
+
+        //puts 1 cube in middle height
+      case k1CubeMid:
+
+
+        //puts 1 cone in low height
+      case k1ConeLow:
+
+
+        //puts 1 cube in low height and goes up ramp
+      case k1CubeLow:
+
+    
+      //just crossed auto line
       case kDefaultAuto:
       default:
-      if (timer.get()<1)
+      if (timer.get()<3.5)
       {
         coastmode();
         m_myRobot.tankDrive(0.5, 0.5);
