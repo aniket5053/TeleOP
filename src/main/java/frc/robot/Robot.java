@@ -41,7 +41,6 @@ public class Robot extends TimedRobot {
 
   //crosses community line
   private static final String kDefaultAuto = "Default";
-  private static final String kCustomAuto = "My Auto";
   //goes up ramp
   private static final String kRamp = "Ramp Up";
   //puts 1 cone in middle height
@@ -91,7 +90,6 @@ public class Robot extends TimedRobot {
     intake.setInverted(true);
     CameraServer.startAutomaticCapture();
     m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
-    m_chooser.addOption("My Auto", kCustomAuto);
     m_chooser.addOption("Ramp Up", kRamp);
     m_chooser.addOption("One Middle Cone", k1ConeMid);
     m_chooser.addOption("One Middle Cube", k1CubeMid);
@@ -168,26 +166,6 @@ public class Robot extends TimedRobot {
   public void autonomousPeriodic()
   {
     switch (m_autoSelected) {
-
-      case kCustomAuto:
-      if (timer.get()<1){
-        coastmode();
-        //m_myRobot.tankDrive(-0.5, 0.65);
-        m_myRobot.tankDrive(0.5, 0.5);
-      }
-      else if (timer.get() < 1.5){
-        m_myRobot.tankDrive(0.5, -0.5);
-        
-      }
-      else if (timer.get() < 2){
-        m_myRobot.tankDrive(0.5, 0.5);
-      }
-      else{
-        m_myRobot.tankDrive(0, 0);
-        breakmode();
-      }
-        break;
-      
         // go up ramp
       case kRamp:
       if (timer.get()<1.8){
@@ -218,7 +196,7 @@ public class Robot extends TimedRobot {
       //just crossed auto line
       case kDefaultAuto:
       default:
-      if (timer.get()<3.5)
+      if (timer.get()<4)
       {
         coastmode();
         m_myRobot.tankDrive(0.5, 0.5);
