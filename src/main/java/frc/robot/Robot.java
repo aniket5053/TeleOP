@@ -140,13 +140,21 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     m_myRobot.tankDrive(-driver.getLeftY()*0.75, -driver.getRightY()*0.75);
-    if (operator.getRawButton(3))
+    if (operator.getXButtonPressed() == true)
+    {
+      intake.set(-0.5);
+    }
+    else if (operator.getXButtonReleased() == true)
+    {
+      intake.set(0);
+    }
+    if (operator.getBButtonPressed() == true)
     {
       intake.set(0.5);
     }
-    if (operator.getBButton() == true)
+    else if (operator.getBButtonReleased() == true)
     {
-      intake.set(0.5);
+      intake.set(0);
     }
      arm.set(operator.getRightY()*0.5);
      elevator.set(operator.getLeftY());  }
