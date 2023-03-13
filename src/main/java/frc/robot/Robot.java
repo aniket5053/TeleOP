@@ -23,8 +23,8 @@ import edu.wpi.first.cameraserver.CameraServer;
 
 /**
  * CAN IDS:
- * LeftFrontDriveMotor: 2
- * LeftRearDriveMotor: 3
+ * LeftFrontDriveMotor: 3
+ * LeftRearDriveMotor: 2
  * RightFrontDriveMotor: 4
  * RightRearDriveMotor: 5
  * elevator: 6
@@ -62,8 +62,8 @@ public class Robot extends TimedRobot {
 
 
   //Drive Train
-  private final CANSparkMax m_LeftFrontDriveMotor = new CANSparkMax(2, MotorType.kBrushless);
-  private final CANSparkMax m_LeftRearDriveMotor = new CANSparkMax(3, MotorType.kBrushless);
+  private final CANSparkMax m_LeftFrontDriveMotor = new CANSparkMax(3, MotorType.kBrushless);
+  private final CANSparkMax m_LeftRearDriveMotor = new CANSparkMax(2, MotorType.kBrushless);
   private final CANSparkMax m_RightFrontDriveMotor = new CANSparkMax(4, MotorType.kBrushless);
   private final CANSparkMax m_RightRearDriveMotor = new CANSparkMax(5, MotorType.kBrushless);
   private final MotorControllerGroup m_left = new MotorControllerGroup(m_LeftFrontDriveMotor,m_LeftRearDriveMotor);
@@ -76,7 +76,7 @@ public class Robot extends TimedRobot {
 
   //Arm
   private final CANSparkMax arm = new CANSparkMax(7, MotorType.kBrushless);
-  RelativeEncoder armEncoder = arm.getEncoder();
+  // RelativeEncoder armEncoder = arm.getEncoder();
 
   //Intake
   private final CANSparkMax intake = new CANSparkMax(8, MotorType.kBrushless);
@@ -88,6 +88,7 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     m_right.setInverted(true);
+    intake.setInverted(true);
     CameraServer.startAutomaticCapture();
     m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
     m_chooser.addOption("My Auto", kCustomAuto);
@@ -120,60 +121,37 @@ public class Robot extends TimedRobot {
 
   //move intake in different directions depending on trigger
   public void intake(){
-    intake.set(operator.getLeftTriggerAxis());
-    intake.set(-operator.getRightTriggerAxis());
+    
+    
   }
 
   //you can move the arm if you press X and then move the left joystick
   public void arm(){
-    if (operator.getRawButton(3)){
-      arm.set(operator.getLeftY());
-    }
-  }
+     
+       arm.set(operator.getLeftY()*0.25);
+     
+   }
 
-  public void lowLevel(){
-    elevatEncoder.setPosition(kDefaultPeriod);
-    armEncoder.setPosition(kDefaultPeriod);
-  }
-
-  public void midLevel(){
-    elevatEncoder.setPosition(kDefaultPeriod);
-    armEncoder.setPosition(kDefaultPeriod);
-
-  }
-
-  public void topLevel(){
-    elevatEncoder.setPosition(kDefaultPeriod);
-    armEncoder.setPosition(kDefaultPeriod);
-
-  }
 
 
   public void elevator(){
-    //hold Y to go to top level
-    if (operator.getRawButton(4)){
-      topLevel();
-    }
-    //hold B to go to mid level
-    else if (operator.getRawButton(2))
-    {
-      midLevel();
-    }
-    //hold A to go to low level
-    else if (operator.getRawButton(1))
-    {
-      lowLevel();
-    }
+   elevator.set(operator.getRightY());
 
   }
 
   @Override
   public void teleopPeriodic() {
     m_myRobot.tankDrive(-driver.getLeftY()*0.75, -driver.getRightY()*0.75);
-    intake();
-    arm();
-    elevator();
-  }
+    if (operator.getRawButton(3))
+    {
+      intake.set(0.5);
+    }
+    if (operator.getBButton() == true)
+    {
+      intake.set(0.5);
+    }
+     arm.set(operator.getRightY()*0.5);
+     elevator.set(operator.getLeftY());  }
 
   @Override
   public void autonomousInit()
