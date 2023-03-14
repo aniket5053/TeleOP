@@ -234,8 +234,10 @@ public class Robot extends TimedRobot {
       case k1CubeLow:
       if (timer.get() <1)
       {
+        breakmode();
         arm.setIdleMode(IdleMode.kBrake);
-        intake.set(1);
+        elevator.set(1);
+        intake.set(-0.5);
       }
 
     
