@@ -157,7 +157,26 @@ public class Robot extends TimedRobot {
       intake.set(0);
     }
      arm.set(operator.getRightY()*0.5);
-     elevator.set(operator.getLeftY());  }
+
+
+     if (operator.getRightBumperPressed() == true)
+     {
+       elevator.set(0.5);
+     }
+     else if (operator.getRightBumperReleased() == true)
+     {
+       elevator.set(0);
+     }
+     if (operator.getLeftBumperPressed() == true)
+     {
+       elevator.set(-0.5);
+     }
+     else if (operator.getLeftBumperReleased() == true)
+     {
+       elevator.set(0);
+     }
+    
+    }
 
   @Override
   public void autonomousInit()
@@ -187,6 +206,14 @@ public class Robot extends TimedRobot {
 
        //puts 1 cone in middle height
       case k1ConeMid:
+      if (timer.get()< 2)
+      {
+        elevator.set(1);
+        arm.set(0.25);
+      }
+      if (timer.get()<2.5){
+        intake.set(0.5);
+      }
 
 
         //puts 1 cube in middle height
