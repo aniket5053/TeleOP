@@ -51,6 +51,8 @@ public class Robot extends TimedRobot {
   private static final String k1ConeLow = "Low Cone";
   //puts 1 cube in low height
   private static final String k1CubeLow = "Low Cube";
+  //puts 1 cube in low height
+  private static final String k1CubeHigh = "High Cube";
 
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
@@ -93,6 +95,7 @@ public class Robot extends TimedRobot {
     CameraServer.startAutomaticCapture();
     m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
     m_chooser.addOption("Ramp Up", kRamp);
+    m_chooser.addOption("One High Cube", k1CubeHigh);
     m_chooser.addOption("One Middle Cone", k1ConeMid);
     m_chooser.addOption("One Middle Cube", k1CubeMid);
     m_chooser.addOption("One Low Cone", k1ConeLow);
@@ -240,7 +243,6 @@ public class Robot extends TimedRobot {
         coastmode();
         elevator.set(1);
         arm.setIdleMode(IdleMode.kBrake);
-
       }
       else if (timer.get() <7)
       {
@@ -251,6 +253,30 @@ public class Robot extends TimedRobot {
       {
         intake.set(-0.5);
       }
+      else 
+      {
+        elevator.set(0);
+        intake.set(0);
+      }
+
+      //puts 1 cube in middle height
+      case k1CubeHigh:
+      if (timer.get() < 2)
+      {
+        coastmode();
+        elevator.set(1);
+        arm.setIdleMode(IdleMode.kBrake);
+      }
+      else if (timer.get() <10)
+      {
+        breakmode();
+        elevator.set(1);
+      }
+      else if (timer.get() < 11)
+      {
+        intake.set(-0.5);
+      }
+
       else 
       {
         elevator.set(0);
