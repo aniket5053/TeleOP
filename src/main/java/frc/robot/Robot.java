@@ -235,14 +235,15 @@ public class Robot extends TimedRobot {
 
         //puts 1 cube in middle height
       case k1CubeMid:
-      if (timer.get() < 4)
+      if (timer.get() < 6)
       {
         coastmode();
         elevator.set(1);
         arm.setIdleMode(IdleMode.kBrake);
-        
+        intake.set(0);
+
       }
-      else if (timer.get() <6)
+      else if (timer.get() <8)
       {
         breakmode();
         m_myRobot.tankDrive(0, 0);
