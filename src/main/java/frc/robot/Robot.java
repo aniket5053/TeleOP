@@ -228,23 +228,45 @@ public class Robot extends TimedRobot {
 
         //puts 1 cone in low height
       case k1ConeLow:
-      if (timer.get() <1)
+      if (timer.get() < 0.25)
       {
         breakmode();
+        m_myRobot.tankDrive(0.25, 0.25);
+        elevator.set(1);
         arm.setIdleMode(IdleMode.kBrake);
+      }
+      else if (timer.get() <1.25)
+      {
+        m_myRobot.tankDrive(0, 0);
         elevator.set(1);
         intake.set(0.5);
+      }
+      else 
+      {
+        elevator.set(0);
+        intake.set(0);
       }
 
 
         //puts 1 cube in low height and goes up ramp
       case k1CubeLow:
-      if (timer.get() <1)
+      if (timer.get() < 0.25)
       {
         breakmode();
+        m_myRobot.tankDrive(0.25, 0.25);
+        elevator.set(1);
         arm.setIdleMode(IdleMode.kBrake);
+      }
+      else if (timer.get() <1.25)
+      {
+        m_myRobot.tankDrive(0, 0);
         elevator.set(1);
         intake.set(-0.5);
+      }
+      else 
+      {
+        elevator.set(0);
+        intake.set(0);
       }
 
     
