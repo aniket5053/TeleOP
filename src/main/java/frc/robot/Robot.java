@@ -212,26 +212,10 @@ public class Robot extends TimedRobot {
 
        //puts 1 cone in middle height
       case k1ConeMid:
-      if (timer.get()< 2)
-      {
-        elevator.set(1);
-        arm.set(0.25);
-      }
-      if (timer.get()<2.5){
-        intake.set(0.5);
-      }
-
-
-        //puts 1 cube in middle height
-      case k1CubeMid:
-
-
-        //puts 1 cone in low height
-      case k1ConeLow:
       if (timer.get() < 0.25)
       {
         breakmode();
-        m_myRobot.tankDrive(0.25, 0.25);
+        m_myRobot.tankDrive(-0.25,- 0.25);
         elevator.set(1);
         arm.setIdleMode(IdleMode.kBrake);
       }
@@ -248,12 +232,12 @@ public class Robot extends TimedRobot {
       }
 
 
-        //puts 1 cube in low height and goes up ramp
-      case k1CubeLow:
+        //puts 1 cube in middle height
+      case k1CubeMid:
       if (timer.get() < 0.25)
       {
         breakmode();
-        m_myRobot.tankDrive(0.25, 0.25);
+        m_myRobot.tankDrive(-0.25, -0.25);
         elevator.set(1);
         arm.setIdleMode(IdleMode.kBrake);
       }
@@ -268,6 +252,40 @@ public class Robot extends TimedRobot {
         elevator.set(0);
         intake.set(0);
       }
+
+
+        //puts 1 cone in low height
+      case k1ConeLow:
+      if (timer.get() < 1.0)
+      {
+        breakmode();
+        elevator.set(0.3);
+        arm.setIdleMode(IdleMode.kBrake);
+        intake.set(-0.5);
+      }
+      else 
+      {
+        elevator.set(0);
+        intake.set(0);
+      }
+      
+
+
+        //puts 1 cube in low height and goes up ramp
+      case k1CubeLow:
+      if (timer.get() < 1.0)
+      {
+        breakmode();
+        elevator.set(0.3);
+        arm.setIdleMode(IdleMode.kBrake);
+        intake.set(0.5);
+      }
+      else 
+      {
+        elevator.set(0);
+        intake.set(0);
+      }
+     
 
     
       //just crossed auto line
