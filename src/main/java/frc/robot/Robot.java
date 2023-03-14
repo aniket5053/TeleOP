@@ -139,6 +139,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopPeriodic() {
+    elevator.setIdleMode(IdleMode.kCoast);
     m_myRobot.tankDrive(-driver.getLeftY()*0.75, -driver.getRightY()*0.75);
     if (operator.getXButtonPressed() == true)
     {
@@ -161,8 +162,7 @@ public class Robot extends TimedRobot {
 
      if (operator.getRightBumperPressed() == true)
      {
-      elevator.setIdleMode(IdleMode.kCoast);
-       elevator.set(0.5);
+       elevator.set(1);
      }
      else if (operator.getRightBumperReleased() == true)
      {
@@ -170,8 +170,7 @@ public class Robot extends TimedRobot {
      }
      if (operator.getLeftBumperPressed() == true)
      {
-      elevator.setIdleMode(IdleMode.kCoast);
-       elevator.set(-0.5);
+       elevator.set(-1);
      }
      else if (operator.getLeftBumperReleased() == true)
      {
