@@ -256,13 +256,16 @@ public class Robot extends TimedRobot {
       case k1ConeLow:
       if (timer.get() < 1.0)
       {
-        breakmode();
+        coastmode();
+        m_myRobot.tankDrive(-0.5, -0.5);
         elevator.set(0.3);
         arm.setIdleMode(IdleMode.kBrake);
         intake.set(-0.5);
       }
       else 
       {
+        breakmode();
+        m_myRobot.tankDrive(0, 0);
         elevator.set(0);
         intake.set(0);
       }
