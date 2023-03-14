@@ -238,7 +238,6 @@ public class Robot extends TimedRobot {
       if (timer.get() < 1)
       {
         coastmode();
-        m_myRobot.tankDrive(0.4, 0.4);
         elevator.set(1);
         arm.setIdleMode(IdleMode.kBrake);
       }
