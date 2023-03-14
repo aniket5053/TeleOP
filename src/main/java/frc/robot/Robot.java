@@ -276,9 +276,16 @@ public class Robot extends TimedRobot {
       {
         intake.set(-0.5);
       }
+      else if (timer.get() < 13)
+      {
+        coastmode();
+        m_myRobot.tankDrive(0.75, 0.75);
+      }
 
       else 
       {
+        breakmode();
+        m_myRobot.tankDrive(0, 0);
         elevator.set(0);
         intake.set(0);
       }
