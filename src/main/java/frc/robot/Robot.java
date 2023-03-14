@@ -157,7 +157,9 @@ public class Robot extends TimedRobot {
     {
       intake.set(0);
     }
-     arm.set(operator.getRightY()*0.5);
+
+
+     arm.set(-operator.getRightY()*0.5);
 
 
      if (operator.getRightBumperPressed() == true)
