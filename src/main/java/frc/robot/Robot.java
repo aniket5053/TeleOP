@@ -88,6 +88,8 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     m_right.setInverted(true);
     intake.setInverted(true);
+    elevator.setIdleMode(IdleMode.kCoast);
+    arm.setIdleMode(IdleMode.kBrake);
     CameraServer.startAutomaticCapture();
     m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
     m_chooser.addOption("Ramp Up", kRamp);
@@ -160,7 +162,7 @@ public class Robot extends TimedRobot {
     }
 
 
-     arm.set(-operator.getRightY()*0.5);
+     arm.set(-operator.getRightY());
 
 
      if (operator.getRightBumperPressed() == true)
@@ -232,7 +234,8 @@ public class Robot extends TimedRobot {
       case k1CubeLow:
       if (timer.get() <1)
       {
-        intake.set(0.5);
+        arm.setIdleMode(IdleMode.kBrake);
+        intake.set(1);
       }
 
     
