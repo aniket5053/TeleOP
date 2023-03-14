@@ -161,6 +161,7 @@ public class Robot extends TimedRobot {
 
      if (operator.getRightBumperPressed() == true)
      {
+      elevator.setIdleMode(IdleMode.kCoast);
        elevator.set(0.5);
      }
      else if (operator.getRightBumperReleased() == true)
@@ -169,6 +170,7 @@ public class Robot extends TimedRobot {
      }
      if (operator.getLeftBumperPressed() == true)
      {
+      elevator.setIdleMode(IdleMode.kCoast);
        elevator.set(-0.5);
      }
      else if (operator.getLeftBumperReleased() == true)
