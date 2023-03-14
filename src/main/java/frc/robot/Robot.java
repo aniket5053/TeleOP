@@ -212,7 +212,7 @@ public class Robot extends TimedRobot {
 
        //puts 1 cone in middle height
       case k1ConeMid:
-      if (timer.get() < 0.25)
+      if (timer.get() < 0.15)
       {
         breakmode();
         m_myRobot.tankDrive(-0.25,- 0.25);
@@ -222,7 +222,7 @@ public class Robot extends TimedRobot {
       else if (timer.get() <1.25)
       {
         m_myRobot.tankDrive(0, 0);
-        elevator.set(1);
+        elevator.set(0.5);
         intake.set(0.5);
       }
       else 
@@ -234,7 +234,7 @@ public class Robot extends TimedRobot {
 
         //puts 1 cube in middle height
       case k1CubeMid:
-      if (timer.get() < 0.25)
+      if (timer.get() < 0.15)
       {
         breakmode();
         m_myRobot.tankDrive(-0.25, -0.25);
@@ -244,7 +244,7 @@ public class Robot extends TimedRobot {
       else if (timer.get() <1.25)
       {
         m_myRobot.tankDrive(0, 0);
-        elevator.set(1);
+        elevator.set(0.5);
         intake.set(-0.5);
       }
       else 
