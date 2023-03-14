@@ -140,6 +140,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     elevator.setIdleMode(IdleMode.kCoast);
+    arm.setIdleMode(IdleMode.kBrake);
     m_myRobot.tankDrive(-driver.getLeftY()*0.75, -driver.getRightY()*0.75);
     if (operator.getXButtonPressed() == true)
     {
@@ -229,6 +230,10 @@ public class Robot extends TimedRobot {
 
         //puts 1 cube in low height and goes up ramp
       case k1CubeLow:
+      if (timer.get() <1)
+      {
+        intake.set(0.5);
+      }
 
     
       //just crossed auto line
