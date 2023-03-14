@@ -292,10 +292,10 @@ public class Robot extends TimedRobot {
       //just crossed auto line
       case kDefaultAuto:
       default:
-      if (timer.get()<4)
+      if (timer.get()<1)
       {
         coastmode();
-        m_myRobot.tankDrive(0.5, 0.5);
+        m_myRobot.tankDrive(-0.2, -0.2);
       }
       else{
         m_myRobot.tankDrive(0, 0);
