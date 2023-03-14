@@ -240,14 +240,16 @@ public class Robot extends TimedRobot {
         coastmode();
         elevator.set(1);
         arm.setIdleMode(IdleMode.kBrake);
-        intake.set(-0.5);
 
       }
-      else if (timer.get() <8)
+      else if (timer.get() <7)
       {
         breakmode();
-        m_myRobot.tankDrive(0, 0);
         elevator.set(1);
+      }
+      else if (timer.get() < 9)
+      {
+        intake.set(-0.5);
       }
       else 
       {
