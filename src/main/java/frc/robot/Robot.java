@@ -73,7 +73,6 @@ public class Robot extends TimedRobot {
 
   //Elevator
   private final CANSparkMax elevator = new CANSparkMax (6, MotorType.kBrushless);
-  RelativeEncoder elevatEncoder = elevator.getEncoder();
 
   //Arm
   private final CANSparkMax arm = new CANSparkMax(7, MotorType.kBrushless);
@@ -172,6 +171,8 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit()
   {
+    elevator.setIdleMode(IdleMode.kCoast);
+    arm.setIdleMode(IdleMode.kBrake);
     m_autoSelected = m_chooser.getSelected();
     System.out.println("Auto selected: " + m_autoSelected);
     timer.reset();
@@ -200,13 +201,8 @@ public class Robot extends TimedRobot {
       if (timer.get() < 1)
       {
         breakmode();
-        m_LeftFrontDriveMotor.set(0.2);
-        m_LeftRearDriveMotor.set(0.2);
-        m_RightFrontDriveMotor.set(0.2);
-        m_RightRearDriveMotor.set(0.2);
-        intake.set(0);
-        arm.set(0);
-        elevator.set(0);
+        m_myRobot.tankDrive(0.25, 0.25);
+        elevator.set(1);
       }
       else 
       {
