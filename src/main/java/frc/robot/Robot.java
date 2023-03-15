@@ -152,7 +152,7 @@ public class Robot extends TimedRobot {
     }
 
     //move arm using right joystick
-     arm.set(-operator.getRightY()*0.6);
+     arm.set(operator.getRightY()*0.6);
 
      //move elevator using left joystick
      elevator.set(-operator.getLeftY());
@@ -251,14 +251,14 @@ public class Robot extends TimedRobot {
         intake.set(0);
         elevator.set(1);
         arm.setIdleMode(IdleMode.kBrake);
-        arm.set(0.2);
+        arm.set(-0.2);
       }
       
       else if (timer.get() < 7.5)
       {
        
         intake.set(-0.5);
-        arm.set(0.2);
+        arm.set(-0.2);
 
       }
       else if (timer.get() < 9)
