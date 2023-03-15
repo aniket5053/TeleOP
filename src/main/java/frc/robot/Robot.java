@@ -246,7 +246,7 @@ public class Robot extends TimedRobot {
 
         //puts 1 cube in middle height
       case k1CubeMid:
-      if (timer.get() < 7)
+      if (timer.get() < 9)
       {
         intake.set(0);
         elevator.set(-1);
@@ -255,15 +255,15 @@ public class Robot extends TimedRobot {
         m_myRobot.tankDrive(0, 0);
       }
       
-      else if (timer.get() < 7.5)
+      else if (timer.get() < 9.5)
       {
         m_myRobot.tankDrive(0, 0);
        
-        intake.set(-0.5);
+        intake.set(-1);
         arm.set(-0.2);
 
       }
-      else if (timer.get() < 9)
+      else if (timer.get() < 11.5)
       {
         m_myRobot.tankDrive(-0.75,- 0.75);
         arm.set(0);
@@ -271,7 +271,7 @@ public class Robot extends TimedRobot {
         arm.setIdleMode(IdleMode.kBrake);
 
       }
-      else if (timer.get() < 9.5)
+      else if (timer.get() < 12)
       {
         m_myRobot.tankDrive(-0.35, -0.35);
         arm.setIdleMode(IdleMode.kBrake);
@@ -289,21 +289,21 @@ public class Robot extends TimedRobot {
 
       //puts 1 cube in high height
       case k1CubeHigh:
-      if (timer.get() < 10)
+      if (timer.get() < 12)
       {
         intake.set(0);
         elevator.set(-1);
         arm.setIdleMode(IdleMode.kBrake);
-        arm.set(0.2);
+        arm.set(-0.2);
       }
-      else if (timer.get() < 11)
+      else if (timer.get() < 13)
       {
        
         intake.set(-0.5);
-        arm.set(0.2);
+        arm.set(0.8);
 
       }
-      else if (timer.get() < 12.5)
+      else if (timer.get() < 14.5)
       {
         m_myRobot.tankDrive(-0.75,- 0.75);
         arm.set(0);
@@ -311,7 +311,7 @@ public class Robot extends TimedRobot {
         arm.setIdleMode(IdleMode.kBrake);
 
       }
-      else if (timer.get() < 13)
+      else if (timer.get() < 15)
       {
         m_myRobot.tankDrive(-0.35, -0.35);
         arm.setIdleMode(IdleMode.kBrake);
