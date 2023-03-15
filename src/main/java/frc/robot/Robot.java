@@ -122,25 +122,7 @@ public class Robot extends TimedRobot {
     m_RightRearDriveMotor.setIdleMode(IdleMode.kCoast);
   }
 
-  //move intake in different directions depending on trigger
-  public void intake(){
-    
-    
-  }
 
-  //you can move the arm if you press X and then move the left joystick
-  public void arm(){
-     
-       arm.set(operator.getLeftY()*0.25);
-     
-   }
-
-
-
-  public void elevator(){
-   elevator.set(operator.getRightY());
-
-  }
 
   @Override
   public void teleopPeriodic() {
@@ -165,7 +147,7 @@ public class Robot extends TimedRobot {
     }
 
 
-     arm.set(-operator.getRightY());
+     arm.set(-operator.getRightY()*0.6);
 
 
      if (operator.getRightBumperPressed() == true)
