@@ -90,7 +90,6 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     m_right.setInverted(true);
     intake.setInverted(true);
-    elevator.setInverted(true);
     elevator.setIdleMode(IdleMode.kCoast);
     arm.setIdleMode(IdleMode.kBrake);
     CameraServer.startAutomaticCapture();
@@ -156,7 +155,7 @@ public class Robot extends TimedRobot {
      arm.set(-operator.getRightY()*0.6);
 
      //move elevator using left joystick
-     elevator.set(operator.getLeftY());
+     elevator.set(-operator.getLeftY());
 
 
     //  if (operator.getRightBumperPressed() == true)
