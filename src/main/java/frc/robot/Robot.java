@@ -338,15 +338,6 @@ public class Robot extends TimedRobot {
       default:
       if (timer.get()<1.5)
       {
-        coastmode();
-        m_myRobot.tankDrive(-0.75, -0.75);
-        arm.setIdleMode(IdleMode.kBrake);
-
-      }
-      else if (timer.get() < 2.3)
-      {
-        m_myRobot.tankDrive(-0.35, -0.35);
-        arm.setIdleMode(IdleMode.kBrake);
       }
       else{
         m_myRobot.tankDrive(0, 0);
