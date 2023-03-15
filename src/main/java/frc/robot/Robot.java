@@ -253,13 +253,23 @@ public class Robot extends TimedRobot {
       {
         intake.set(-0.5);
       }
-      else if (timer.get() < 10.75)
+      else if (timer.get() < 10.5)
       {
         coastmode();
         m_myRobot.tankDrive(-0.75,- 0.75);
+        arm.setIdleMode(IdleMode.kBrake);
+
+      }
+      else if (timer.get() < 11)
+      {
+        m_myRobot.tankDrive(-0.35, -0.35);
+        arm.setIdleMode(IdleMode.kBrake);
+
       }
       else 
       {
+        breakmode();
+        m_myRobot.tankDrive(0, 0);
         elevator.set(0);
         intake.set(0);
       }
@@ -281,10 +291,17 @@ public class Robot extends TimedRobot {
       {
         intake.set(-0.5);
       }
-      else if (timer.get() < 12.75)
+      else if (timer.get() < 12.5)
       {
         coastmode();
         m_myRobot.tankDrive(-0.75, -0.75);
+        arm.setIdleMode(IdleMode.kBrake);
+      }
+      else if (timer.get() < 13)
+      {
+        m_myRobot.tankDrive(-0.35, -0.35);
+        arm.setIdleMode(IdleMode.kBrake);
+
       }
 
       else 
@@ -342,7 +359,7 @@ public class Robot extends TimedRobot {
         arm.setIdleMode(IdleMode.kBrake);
 
       }
-      else if (timer.get() < 0.5)
+      else if (timer.get() < 2.3)
       {
         m_myRobot.tankDrive(-0.35, -0.35);
         arm.setIdleMode(IdleMode.kBrake);
