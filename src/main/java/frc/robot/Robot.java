@@ -194,6 +194,7 @@ public class Robot extends TimedRobot {
         m_myRobot.tankDrive(0, 0);
         breakmode();
       }
+      break;
 
        //puts 1 cone in middle height
       case k1ConeMid:
@@ -207,6 +208,7 @@ public class Robot extends TimedRobot {
       {
         elevator.set(0);
       }
+      break;
 
 
         //puts 1 cube in middle height
@@ -257,6 +259,7 @@ public class Robot extends TimedRobot {
         intake.set(0);
         arm.set(0);
       }
+      break;
 
       //puts 1 cube in high height
       case k1CubeHigh:
@@ -295,7 +298,7 @@ public class Robot extends TimedRobot {
         elevator.set(0);
         intake.set(0);
       }
-
+      break;
 
         //puts 1 cone in low height
       case k1ConeLow:
@@ -313,7 +316,7 @@ public class Robot extends TimedRobot {
         elevator.set(0);
         intake.set(0);
       }
-      
+      break;
 
 
         //puts 1 cube in low height and goes up ramp
@@ -330,6 +333,7 @@ public class Robot extends TimedRobot {
         elevator.set(0);
         intake.set(0);
       }
+      break;
      
 
     
@@ -338,7 +342,7 @@ public class Robot extends TimedRobot {
       default:
       if (timer.get()<1.5)
       {
-        m_myRobot.tankDrive(0, 0);
+        m_myRobot.tankDrive(0.2, 0.2);
       }
       else{
         m_myRobot.tankDrive(0, 0);
