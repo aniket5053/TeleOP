@@ -277,6 +277,7 @@ public class Robot extends TimedRobot {
         m_myRobot.tankDrive(0, 0);
         elevator.set(0);
         intake.set(0);
+        arm.set(0);
       }
 
       //puts 1 cube in high height
