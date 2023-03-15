@@ -199,7 +199,11 @@ public class Robot extends TimedRobot {
       case k1ConeMid:
       if (timer.get() < 5)
       {
-        m_myRobot.tankDrive(0, 0);
+        breakmode();
+        m_LeftFrontDriveMotor.set(0);
+        m_LeftRearDriveMotor.set(0);
+        m_RightFrontDriveMotor.set(0);
+        m_RightRearDriveMotor.set(0);
         intake.set(0);
         arm.set(0);
         elevator.set(1);
