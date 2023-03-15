@@ -95,8 +95,8 @@ public class Robot extends TimedRobot {
     CameraServer.startAutomaticCapture();
     m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
     m_chooser.addOption("Ramp Up", kRamp);
-    m_chooser.addOption("One High Cube", k1CubeHigh);
-    m_chooser.addOption("One Middle Cone", k1ConeMid);
+    //m_chooser.addOption("One High Cube", k1CubeHigh);
+    //m_chooser.addOption("One Middle Cone", k1ConeMid);
     m_chooser.addOption("One Middle Cube", k1CubeMid);
     m_chooser.addOption("One Low Cone", k1ConeLow);
     m_chooser.addOption("One Low Cube", k1CubeLow);
@@ -208,40 +208,40 @@ public class Robot extends TimedRobot {
       break;
 
        //puts 1 cone in middle height
-      case k1ConeMid:
-      if (timer.get() < 4)
-      {
-        elevator.set(-1);
-        arm.set(0.3);
-      }
-      else if (timer.get()< 4.5)
-      {
-        elevator.set(0);
-        arm.set(0);
-        intake.set(0.5);
-      }
-      else if (timer.get() < 6)
-      {
-         m_myRobot.tankDrive(-0.75,- 0.75);
-        arm.set(0);
-        intake.set(0);
-        arm.setIdleMode(IdleMode.kBrake);
-      }
-      else if (timer.get() < 6.5)
-      {
-        m_myRobot.tankDrive(-0.35, -0.35);
-        arm.setIdleMode(IdleMode.kBrake);
+      // case k1ConeMid:
+      // if (timer.get() < 4)
+      // {
+      //   elevator.set(-1);
+      //   arm.set(0.3);
+      // }
+      // else if (timer.get()< 4.5)
+      // {
+      //   elevator.set(0);
+      //   arm.set(0);
+      //   intake.set(0.5);
+      // }
+      // else if (timer.get() < 6)
+      // {
+      //    m_myRobot.tankDrive(-0.75,- 0.75);
+      //   arm.set(0);
+      //   intake.set(0);
+      //   arm.setIdleMode(IdleMode.kBrake);
+      // }
+      // else if (timer.get() < 6.5)
+      // {
+      //   m_myRobot.tankDrive(-0.35, -0.35);
+      //   arm.setIdleMode(IdleMode.kBrake);
 
-      }
-      else 
-      {
-        breakmode();
-        m_myRobot.tankDrive(0, 0);
-        elevator.set(0);
-        intake.set(0);
-        arm.set(0);
-      }
-      break;
+      // }
+      // else 
+      // {
+      //   breakmode();
+      //   m_myRobot.tankDrive(0, 0);
+      //   elevator.set(0);
+      //   intake.set(0);
+      //   arm.set(0);
+      // }
+      // break;
 
 
         //puts 1 cube in middle height
@@ -288,44 +288,44 @@ public class Robot extends TimedRobot {
       break;
 
       //puts 1 cube in high height
-      case k1CubeHigh:
-      if (timer.get() < 12)
-      {
-        intake.set(0);
-        elevator.set(-1);
-        arm.setIdleMode(IdleMode.kBrake);
-        arm.set(-0.2);
-      }
-      else if (timer.get() < 13)
-      {
+      // case k1CubeHigh:
+      // if (timer.get() < 12)
+      // {
+      //   intake.set(0);
+      //   elevator.set(-1);
+      //   arm.setIdleMode(IdleMode.kBrake);
+      //   arm.set(-0.2);
+      // }
+      // else if (timer.get() < 13)
+      // {
        
-        intake.set(-0.5);
-        arm.set(0.8);
+      //   intake.set(-0.5);
+      //   arm.set(0.8);
 
-      }
-      else if (timer.get() < 14.5)
-      {
-        m_myRobot.tankDrive(-0.75,- 0.75);
-        arm.set(0);
-        intake.set(0);
-        arm.setIdleMode(IdleMode.kBrake);
+      // }
+      // else if (timer.get() < 14.5)
+      // {
+      //   m_myRobot.tankDrive(-0.75,- 0.75);
+      //   arm.set(0);
+      //   intake.set(0);
+      //   arm.setIdleMode(IdleMode.kBrake);
 
-      }
-      else if (timer.get() < 15)
-      {
-        m_myRobot.tankDrive(-0.35, -0.35);
-        arm.setIdleMode(IdleMode.kBrake);
+      // }
+      // else if (timer.get() < 15)
+      // {
+      //   m_myRobot.tankDrive(-0.35, -0.35);
+      //   arm.setIdleMode(IdleMode.kBrake);
 
-      }
-      else 
-      {
-        breakmode();
-        m_myRobot.tankDrive(0, 0);
-        elevator.set(0);
-        intake.set(0);
-        arm.set(0);
-      }
-      break;
+      // }
+      // else 
+      // {
+      //   breakmode();
+      //   m_myRobot.tankDrive(0, 0);
+      //   elevator.set(0);
+      //   intake.set(0);
+      //   arm.set(0);
+      // }
+      // break;
 
         //puts 1 cone in low height
       case k1ConeLow:
