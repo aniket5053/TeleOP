@@ -334,15 +334,7 @@ public class Robot extends TimedRobot {
 
     
       //just crossed auto line
-      case kDefaultAuto:
-      default:
-      if (timer.get()<1.5)
-      {
-      }
-      else{
-        m_myRobot.tankDrive(0, 0);
-        breakmode();
-      }
+      
         break;
     }
     }
