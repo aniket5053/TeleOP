@@ -210,6 +210,7 @@ public class Robot extends TimedRobot {
       }
       else 
       {
+        m_myRobot.tankDrive(0, 0);
         elevator.set(0);
         intake.set(0);
       }
