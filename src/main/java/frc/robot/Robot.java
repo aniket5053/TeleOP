@@ -90,6 +90,7 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     m_right.setInverted(true);
     intake.setInverted(true);
+    elevator.setInverted(true);
     elevator.setIdleMode(IdleMode.kCoast);
     arm.setIdleMode(IdleMode.kBrake);
     CameraServer.startAutomaticCapture();
