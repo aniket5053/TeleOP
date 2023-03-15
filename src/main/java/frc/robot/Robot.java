@@ -131,22 +131,22 @@ public class Robot extends TimedRobot {
     arm.setIdleMode(IdleMode.kBrake);
     m_myRobot.tankDrive(-driver.getLeftY()*0.75, -driver.getRightY()*0.75);
 
-    //if X is pressed, intake cone
-    if (operator.getXButtonPressed() == true)
+    //if Right Bumper is pressed, intake cone
+    if (operator.getRightBumperPressed() == true)
     {
       intake.set(-0.5);
     }
-    else if (operator.getXButtonReleased() == true)
+    else if (operator.getRightBumperReleased() == true)
     {
       intake.set(0);
     }
 
-    //if B is pressed, intake cube
-    if (operator.getBButtonPressed() == true)
+    //if LB is pressed, intake cube
+    if (operator.getLeftBumperPressed() == true)
     {
       intake.set(0.5);
     }
-    else if (operator.getBButtonReleased() == true)
+    else if (operator.getLeftBumperReleased() == true)
     {
       intake.set(0);
     }
