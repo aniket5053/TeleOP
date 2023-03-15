@@ -252,10 +252,12 @@ public class Robot extends TimedRobot {
         elevator.set(1);
         arm.setIdleMode(IdleMode.kBrake);
         arm.set(-0.2);
+        m_myRobot.tankDrive(0, 0);
       }
       
       else if (timer.get() < 7.5)
       {
+        m_myRobot.tankDrive(0, 0);
        
         intake.set(-0.5);
         arm.set(-0.2);
@@ -331,10 +333,10 @@ public class Robot extends TimedRobot {
       {
         intake.set(0.3);
       }
-      else if (timer.get() <1.5){
+      else if (timer.get() <2){
         m_myRobot.tankDrive(-0.75, -0.75);
       }
-      else if (timer.get() < 2)
+      else if (timer.get() < 2.5)
       {
         m_myRobot.tankDrive(-0.35, -0.35);
       }
@@ -353,10 +355,10 @@ public class Robot extends TimedRobot {
       {
         intake.set(-0.3);
       }
-      else if (timer.get() <1.5){
+      else if (timer.get() <2){
         m_myRobot.tankDrive(-0.75, -0.75);
       }
-      else if (timer.get() < 2)
+      else if (timer.get() < 2.5)
       {
         m_myRobot.tankDrive(-0.35, -0.35);
       }
