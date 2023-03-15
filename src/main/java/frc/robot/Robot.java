@@ -241,10 +241,11 @@ public class Robot extends TimedRobot {
       if (timer.get() < 2)
       {
         breakmode();
-        m_myRobot.tankDrive(0.25,0.25);
+        m_myRobot.tankDrive(0.45,0.45);
         intake.set(0);
         elevator.set(1);
         arm.setIdleMode(IdleMode.kBrake);
+        arm.set(0.2);
       }
       else if (timer.get() <7)
       {
