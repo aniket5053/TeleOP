@@ -172,7 +172,6 @@ public class Robot extends TimedRobot {
   public void autonomousInit()
   {
     elevator.setIdleMode(IdleMode.kCoast);
-    arm.setIdleMode(IdleMode.kBrake);
     m_autoSelected = m_chooser.getSelected();
     System.out.println("Auto selected: " + m_autoSelected);
     timer.reset();
@@ -198,17 +197,15 @@ public class Robot extends TimedRobot {
 
        //puts 1 cone in middle height
       case k1ConeMid:
-      if (timer.get() < 1)
+      if (timer.get() < 4)
       {
-        breakmode();
-        m_myRobot.tankDrive(0.25, 0.25);
-        elevator.set(1);
+        elevator.setIdleMode(IdleMode.kCoast);
+        m_myRobot.stopMotor();
+        elevator.set(0.75);
       }
       else 
       {
-        m_myRobot.tankDrive(0, 0);
         elevator.set(0);
-        intake.set(0);
       }
 
 
