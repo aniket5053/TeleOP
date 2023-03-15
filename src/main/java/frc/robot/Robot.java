@@ -260,7 +260,7 @@ public class Robot extends TimedRobot {
         m_myRobot.tankDrive(0, 0);
        
         intake.set(-1);
-        arm.set(-0.2);
+        //arm.set(-0.2);
 
       }
       else if (timer.get() < 11.5)
