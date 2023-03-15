@@ -155,7 +155,7 @@ public class Robot extends TimedRobot {
      arm.set(operator.getRightY()*0.6);
 
      //move elevator using left joystick
-     elevator.set(-operator.getLeftY());
+     elevator.set(operator.getLeftY());
 
 
     //  if (operator.getRightBumperPressed() == true)
