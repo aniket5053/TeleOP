@@ -215,19 +215,9 @@ public class Robot extends TimedRobot {
 
        //puts 1 cone in middle height
       case k1ConeMid:
-      if (timer.get() < 0.15)
+      if (timer.get() < 5)
       {
-        coastmode();
-        m_myRobot.tankDrive(-0.25,- 0.25);
         elevator.set(1);
-        arm.setIdleMode(IdleMode.kBrake);
-      }
-      else if (timer.get() <1.25)
-      {
-        breakmode();
-        m_myRobot.tankDrive(0, 0);
-        elevator.set(1);
-        intake.set(0.5);
       }
       else 
       {
@@ -264,7 +254,6 @@ public class Robot extends TimedRobot {
       }
       else if (timer.get() < 10.5)
       {
-        coastmode();
         m_myRobot.tankDrive(-0.75,- 0.75);
         arm.set(0);
         intake.set(0);
