@@ -255,7 +255,7 @@ public class Robot extends TimedRobot {
         m_myRobot.tankDrive(0, 0);
       }
       
-      else if (timer.get() < 9.5)
+      else if (timer.get() < 10)
       {
         m_myRobot.tankDrive(0, 0);
        
