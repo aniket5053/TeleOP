@@ -197,16 +197,16 @@ public class Robot extends TimedRobot {
 
        //puts 1 cone in middle height
       case k1ConeMid:
-      if (timer.get() < 5)
+      if (timer.get() < 1)
       {
         breakmode();
-        m_LeftFrontDriveMotor.set(0);
-        m_LeftRearDriveMotor.set(0);
-        m_RightFrontDriveMotor.set(0);
-        m_RightRearDriveMotor.set(0);
+        m_LeftFrontDriveMotor.set(0.2);
+        m_LeftRearDriveMotor.set(0.2);
+        m_RightFrontDriveMotor.set(0.2);
+        m_RightRearDriveMotor.set(0.2);
         intake.set(0);
         arm.set(0);
-        elevator.set(1);
+        elevator.set(0);
       }
       else 
       {
