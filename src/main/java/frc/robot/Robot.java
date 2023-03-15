@@ -186,7 +186,8 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousPeriodic()
   {
-    switch (m_autoSelected) {
+    switch (m_autoSelected) 
+    {
         // go up ramp
       case kRamp:
       if (timer.get()<1.8){
@@ -218,8 +219,6 @@ public class Robot extends TimedRobot {
       case k1CubeMid:
       if (timer.get() < 2)
       {
-        breakmode();
-        m_myRobot.tankDrive(0.45,0.45);
         intake.set(0);
         elevator.set(1);
         arm.setIdleMode(IdleMode.kBrake);
@@ -227,15 +226,13 @@ public class Robot extends TimedRobot {
       }
       else if (timer.get() <7)
       {
-        m_myRobot.tankDrive(0.25,0.25);
         intake.set(0);
         elevator.set(1);
         arm.set(0.2);
       }
       else if (timer.get() < 9)
       {
-        m_myRobot.tankDrive(0.0,0.0);
-        elevator.set(0);
+       
         intake.set(-0.5);
         arm.set(0.2);
 
@@ -268,38 +265,45 @@ public class Robot extends TimedRobot {
       case k1CubeHigh:
       if (timer.get() < 2)
       {
-        coastmode();
+        intake.set(0);
         elevator.set(1);
         arm.setIdleMode(IdleMode.kBrake);
+        arm.set(0.2);
       }
-      else if (timer.get() <10)
+      else if (timer.get() < 10)
       {
-        breakmode();
+        intake.set(0);
         elevator.set(1);
+        arm.set(0.2);
       }
-      else if (timer.get() < 11)
+      else if (timer.get() < 12)
       {
+       
         intake.set(-0.5);
+        arm.set(0.2);
+
       }
-      else if (timer.get() < 12.5)
+      else if (timer.get() < 13.5)
       {
-        coastmode();
-        m_myRobot.tankDrive(-0.75, -0.75);
+        m_myRobot.tankDrive(-0.75,- 0.75);
+        arm.set(0);
+        intake.set(0);
         arm.setIdleMode(IdleMode.kBrake);
+
       }
-      else if (timer.get() < 13)
+      else if (timer.get() < 14)
       {
         m_myRobot.tankDrive(-0.35, -0.35);
         arm.setIdleMode(IdleMode.kBrake);
 
       }
-
       else 
       {
         breakmode();
         m_myRobot.tankDrive(0, 0);
         elevator.set(0);
         intake.set(0);
+        arm.set(0);
       }
       break;
 
@@ -307,17 +311,20 @@ public class Robot extends TimedRobot {
       case k1ConeLow:
       if (timer.get() < 1.0)
       {
-        coastmode();
-        elevator.set(0.3);
-        arm.setIdleMode(IdleMode.kBrake);
-        intake.set(0.2);
+        intake.set(0.3);
+      }
+      else if (timer.get() <1.5){
+        m_myRobot.tankDrive(-0.75, -0.75);
+      }
+      else if (timer.get() < 2)
+      {
+        m_myRobot.tankDrive(-0.35, -0.35);
       }
       else 
       {
-        breakmode();
         m_myRobot.tankDrive(0, 0);
-        elevator.set(0);
         intake.set(0);
+        breakmode();
       }
       break;
 
@@ -326,15 +333,20 @@ public class Robot extends TimedRobot {
       case k1CubeLow:
       if (timer.get() < 1.0)
       {
-        breakmode();
-        elevator.set(0.3);
-        arm.setIdleMode(IdleMode.kBrake);
-        intake.set(-0.2);
+        intake.set(-0.3);
+      }
+      else if (timer.get() <1.5){
+        m_myRobot.tankDrive(-0.75, -0.75);
+      }
+      else if (timer.get() < 2)
+      {
+        m_myRobot.tankDrive(-0.35, -0.35);
       }
       else 
       {
-        elevator.set(0);
+        m_myRobot.tankDrive(0, 0);
         intake.set(0);
+        breakmode();
       }
       break;
      
@@ -345,7 +357,11 @@ public class Robot extends TimedRobot {
       default:
       if (timer.get()<1.5)
       {
-        m_myRobot.tankDrive(0.2, 0.2);
+        m_myRobot.tankDrive(-0.75, -0.75);
+      }
+      else if (timer.get() < 0.5)
+      {
+        m_myRobot.tankDrive(-0.35, -0.35);
       }
       else{
         m_myRobot.tankDrive(0, 0);
