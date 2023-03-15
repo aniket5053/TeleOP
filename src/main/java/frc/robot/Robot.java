@@ -211,7 +211,7 @@ public class Robot extends TimedRobot {
       case k1ConeMid:
       if (timer.get() < 4)
       {
-        elevator.set(1);
+        elevator.set(-1);
         arm.set(0.3);
       }
       else if (timer.get()< 4.5)
@@ -249,7 +249,7 @@ public class Robot extends TimedRobot {
       if (timer.get() < 7)
       {
         intake.set(0);
-        elevator.set(1);
+        elevator.set(-1);
         arm.setIdleMode(IdleMode.kBrake);
         arm.set(-0.2);
         m_myRobot.tankDrive(0, 0);
@@ -292,7 +292,7 @@ public class Robot extends TimedRobot {
       if (timer.get() < 10)
       {
         intake.set(0);
-        elevator.set(1);
+        elevator.set(-1);
         arm.setIdleMode(IdleMode.kBrake);
         arm.set(0.2);
       }
@@ -333,10 +333,10 @@ public class Robot extends TimedRobot {
       {
         intake.set(0.3);
       }
-      else if (timer.get() <2){
+      else if (timer.get() <2.5){
         m_myRobot.tankDrive(-0.75, -0.75);
       }
-      else if (timer.get() < 2.5)
+      else if (timer.get() < 3)
       {
         m_myRobot.tankDrive(-0.35, -0.35);
       }
@@ -355,10 +355,10 @@ public class Robot extends TimedRobot {
       {
         intake.set(-0.3);
       }
-      else if (timer.get() <2){
+      else if (timer.get() <2.5){
         m_myRobot.tankDrive(-0.75, -0.75);
       }
-      else if (timer.get() < 2.5)
+      else if (timer.get() < 3)
       {
         m_myRobot.tankDrive(-0.35, -0.35);
       }
