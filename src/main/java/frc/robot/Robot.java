@@ -19,6 +19,7 @@ import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj.motorcontrol.PWMSparkMax;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.cameraserver.CameraServer;
 
 /**
@@ -100,6 +101,7 @@ public class Robot extends TimedRobot {
     m_chooser.addOption("One Low Cone", k1ConeLow);
     m_chooser.addOption("One Low Cube", k1CubeLow);
     SmartDashboard.putData("Auto choices", m_chooser);
+    CommandScheduler.getInstance().run();
     
   }
 
@@ -165,6 +167,7 @@ public class Robot extends TimedRobot {
      {
        elevator.set(0);
      }
+     
     
     }
 
