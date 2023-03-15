@@ -147,7 +147,7 @@ public class Robot extends TimedRobot {
     }
 
 
-     arm.set(-operator.getRightY()*0.6);
+     arm.set(-operator.getRightY()*0.4);
 
 
      if (operator.getRightBumperPressed() == true)
@@ -199,6 +199,9 @@ public class Robot extends TimedRobot {
       case k1ConeMid:
       if (timer.get() < 5)
       {
+        m_myRobot.tankDrive(0, 0);
+        intake.set(0);
+        arm.set(0);
         elevator.set(1);
       }
       else 
