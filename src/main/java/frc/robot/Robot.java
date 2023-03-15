@@ -130,6 +130,8 @@ public class Robot extends TimedRobot {
     elevator.setIdleMode(IdleMode.kCoast);
     arm.setIdleMode(IdleMode.kBrake);
     m_myRobot.tankDrive(-driver.getLeftY()*0.75, -driver.getRightY()*0.75);
+
+    //if X is pressed, intake cone
     if (operator.getXButtonPressed() == true)
     {
       intake.set(-0.5);
@@ -138,6 +140,8 @@ public class Robot extends TimedRobot {
     {
       intake.set(0);
     }
+
+    //if B is pressed, intake cube
     if (operator.getBButtonPressed() == true)
     {
       intake.set(0.5);
@@ -147,26 +151,29 @@ public class Robot extends TimedRobot {
       intake.set(0);
     }
 
+    //move arm using right joystick
+     arm.set(-operator.getRightY()*0.6);
 
-     arm.set(-operator.getRightY()*0.4);
+     //move elevator using left joystick
+     elevator.set(operator.getLeftY());
 
 
-     if (operator.getRightBumperPressed() == true)
-     {
-       elevator.set(1);
-     }
-     else if (operator.getRightBumperReleased() == true)
-     {
-       elevator.set(0);
-     }
-     if (operator.getLeftBumperPressed() == true)
-     {
-       elevator.set(-1);
-     }
-     else if (operator.getLeftBumperReleased() == true)
-     {
-       elevator.set(0);
-     }
+    //  if (operator.getRightBumperPressed() == true)
+    //  {
+    //    elevator.set(1);
+    //  }
+    //  else if (operator.getRightBumperReleased() == true)
+    //  {
+    //    elevator.set(0);
+    //  }
+    //  if (operator.getLeftBumperPressed() == true)
+    //  {
+    //    elevator.set(-1);
+    //  }
+    //  else if (operator.getLeftBumperReleased() == true)
+    //  {
+    //    elevator.set(0);
+    //  }
      
     
     }
@@ -190,7 +197,7 @@ public class Robot extends TimedRobot {
     {
         // go up ramp
       case kRamp:
-      if (timer.get()<1.8){
+      if (timer.get()<1.5){
         coastmode();
         m_myRobot.tankDrive(0.5, 0.5);
       }
@@ -204,13 +211,18 @@ public class Robot extends TimedRobot {
       case k1ConeMid:
       if (timer.get() < 4)
       {
-        elevator.setIdleMode(IdleMode.kCoast);
-        m_myRobot.stopMotor();
-        elevator.set(0.75);
+        elevator.set(1);
+        arm.set(0.3);
+      }
+      else if (timer.get()< 4.5)
+      {
+        elevator.set(0);
+        arm.set(0);
+        intake.set(0.5);
       }
       else 
       {
-        elevator.set(0);
+        intake.set(0);
       }
       break;
 
