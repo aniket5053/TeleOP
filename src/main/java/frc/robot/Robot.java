@@ -240,7 +240,6 @@ public class Robot extends TimedRobot {
       case k1CubeMid:
       if (timer.get() < 2)
       {
-        coastmode();
         m_myRobot.tankDrive(0,0);
         elevator.set(1);
         arm.setIdleMode(IdleMode.kBrake);
